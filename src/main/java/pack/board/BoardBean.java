@@ -12,7 +12,7 @@ public class BoardBean {
     private int num, readcnt, gnum, onum, nested;
 
     public void setBdate(){ // 오버로딩
-        // test
+        // test push
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int month = now.getMonthValue();
