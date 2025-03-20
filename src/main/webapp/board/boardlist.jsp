@@ -22,7 +22,7 @@
             [ <a href="../index.html">메인으로</a> ]&nbsp;
             [ <a href="boardlist.jsp?page=1">최근목록</a> ]&nbsp;
             [ <a href="boardwrite.jsp">새글작성</a> ]&nbsp;
-            [ <a href="#" id="admin" onclick="window.open('admin.jsp','width=300, height=200, top=200, left=300')">관리자용</a> ]&nbsp;
+            [ <a href="#" id="admin" onclick="window.open('admin.jsp','','width=400, height=200, top=200, left=300')">관리자용</a> ]&nbsp;
             <br>
             <br>
             <table style="width:100%">
@@ -49,11 +49,18 @@
 
                     for(int i = 0; i < list.size(); i++){
                         dto = list.get(i);
+
+                        // 댓글 들여쓰기 준비
+                        int nst = dto.getNested();
+                        String tab = "";
+                        for(int k = 0; k < nst; k++){
+                            tab += "&nbsp;&nbsp;";
+                        }
                 %>
                 <tr>
                     <td><%=dto.getNum()%></td>
                     <td>
-                        <a href="boardcontent.jsp?num=<%=dto.getNum()%>"><%=dto.getTitle()%></a>
+                        <%=tab%><a href="boardcontent.jsp?num=<%=dto.getNum()%>&page=<%=bpage%>"><%=dto.getTitle()%></a>
                     </td>
                     <td><%=dto.getName()%></td>
                     <td><%=dto.getBdate()%></td>
