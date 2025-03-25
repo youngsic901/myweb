@@ -5,7 +5,7 @@ window.onload = () => {
         window.close();
     }
 }
-
+// zipcheck
 function dongCheck(){
     if(zipForm.dongName.value === ""){
         alert("검색할 동 이름을 입력하세요");

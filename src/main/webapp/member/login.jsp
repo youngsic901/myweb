@@ -9,7 +9,13 @@
 <head>
     <title>Title</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+            document.querySelector("#btnLogin").addEventListener("click", funcLogin);
+            document.querySelector("#btnNewMember").addEventListener("click", funcNewMember);
+        }
+    </script>
 </head>
 <body>
 <%

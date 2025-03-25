@@ -29,6 +29,46 @@ function inputCheck() {
     regForm.submit();
 }
 
+// zipcheck
+function dongCheck(){
+    if(zipForm.dongName.value === ""){
+        alert("검색할 동 이름을 입력하세요");
+        zipForm.dongName.focus();
+        return;
+    }
+
+    zipForm.submit();
+}
+
+function sendDataFunc(code, a1, a2, a3, a4){
+    // alert(code + a1 + a2 + a3 + a4);
+    // opener zipcheck.jsp를 부른 멤버 리스트(memberlist.jsp 의 zipcode, address 태그)
+    opener.document.regForm.zipcode.value = code;
+    const addr = a1 + " " + a2 + " " + a3 + " ";
+    opener.document.regForm.address.value = addr;
+
+    window.close(); // 주소 검색창을 닫는다.
+}
+
+//회원 로그인 관련 ==> login
+function funcLogin() {
+    if(loginForm.id.value === ""){
+        alert("회원 id 입력");
+        loginForm.id.focus();
+    } else if(loginForm.passwd.value === ""){
+        alert("회원 비밀번호 입력");
+        loginForm.passwd.focus();
+    } else {
+        loginForm.action = "loginproc.jsp";
+        loginForm.method = "post";
+        loginForm.submit();
+    }
+}
+
+function funcNewMember() {
+    location.href = "../member/register.jsp"
+}
+
 // 쇼핑몰 고객이 로그인 후 자신의 정보 수정
 function memberUpdate(){
     // 입력자료 오류검사...
@@ -61,4 +101,17 @@ function funcLogin(){
 
 function funcAdminHome() {
     location.href = "../guest/guest_index.jsp";
+}
+
+function memberUpdate(id) { // 관리자 : 전체 회원 수정용
+    document.updateFrm.id.value = id;
+    document.updateFrm.submit();
+}
+
+function memberUpdateAdmin() {
+    document.updateFormAdmin.submit();
+}
+
+function memberUpdateCancelAdmin() {
+    location.href = "membermanager.jsp";
 }

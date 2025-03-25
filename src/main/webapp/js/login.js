@@ -3,7 +3,7 @@ window.onload = () => {
     document.querySelector("#btnNewMember").addEventListener("click", funcNewMember);
 }
 
-//회원 로그인 관련
+//회원 로그인 관련 ==> login
 function funcLogin() {
     if(loginForm.id.value === ""){
         alert("회원 id 입력");

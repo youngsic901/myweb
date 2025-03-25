@@ -17,7 +17,16 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="../js/zipcheck.js"></script>
+    <script src="../js/script.js"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+            document.querySelector("#btnZipFind").onclick = dongCheck;
+
+            document.querySelector("#btnZipClose").onclick = function(){
+                window.close();
+            }
+        }
+    </script>
 </head>
 <body>
 <strong>* 우편번호 찾기 *</strong>
