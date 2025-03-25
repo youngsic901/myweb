@@ -28,3 +28,37 @@ function inputCheck() {
 
     regForm.submit();
 }
+
+// 쇼핑몰 고객이 로그인 후 자신의 정보 수정
+function memberUpdate(){
+    // 입력자료 오류검사...
+
+    document.updateForm.submit();
+}
+
+function memberUpdateCancel(){
+    location.href = "../guest/guest_index.jsp";
+}
+
+function memberDelete(){
+    alert("회원 탈퇴 불가.");
+}
+
+// 관리자 관련
+function funcLogin(){
+    if(adminLoginForm.admin_id.value === ""){
+        alert("관리자 id를 입력하세요");
+        adminLoginForm.admin_id.focus();
+    } else if(adminLoginForm.admin_passwd.value === ""){
+        alert("관리자 password를 입력하세요");
+        adminLoginForm.admin_passwd.focus();
+    } else {
+        adminLoginForm.action = "loginproc.jsp";
+        adminLoginForm.method = "post";
+        adminLoginForm.submit();
+    }
+}
+
+function funcAdminHome() {
+    location.href = "../guest/guest_index.jsp";
+}

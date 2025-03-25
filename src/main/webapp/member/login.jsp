@@ -16,6 +16,9 @@
     if(id != null){
 %>
 <b><%=id%>님 로그인 중</b>
+<script type="text/javascript">
+    location.href = "../guest/guest_index.jsp";
+</script>
 <a href="logout.jsp">로그아웃</a>
 <%
     } else { // 로그인 안 한 경우

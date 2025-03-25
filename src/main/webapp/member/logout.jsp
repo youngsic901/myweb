@@ -13,7 +13,7 @@
 <body>
 <script type="text/javascript">
     alert("로그아웃 성공");
-    location.href = "login.jsp";
+    location.href = "../guest/guest_index.jsp";
 </script>
 </body>
 </html>
