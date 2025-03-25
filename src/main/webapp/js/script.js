@@ -115,3 +115,8 @@ function memberUpdateAdmin() {
 function memberUpdateCancelAdmin() {
     location.href = "membermanager.jsp";
 }
+
+function productDetail(no){ // 관리자 : 상품 처리
+    document.detailFrm.no.value = no;
+    document.detailFrm.submit();
+}
