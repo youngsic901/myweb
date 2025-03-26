@@ -1,7 +1,5 @@
 package pack.product;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -120,5 +118,59 @@ public class ProductManager {
             }
         }
         return dto;
+    }
+
+    public boolean updateProduct(ProductDto dto){
+        boolean b = false;
+        try {
+            conn = ds.getConnection();
+            String sql = "update shop_product set name=?, price=?, detail=?, stock=?, image=? where no = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, dto.getName());
+            pstmt.setString(2, dto.getPrice());
+            pstmt.setString(3, dto.getDetail());
+            pstmt.setString(4, dto.getStock());
+            pstmt.setString(5, dto.getImage());
+            pstmt.setInt(6, dto.getNo());
+
+            int result = pstmt.executeUpdate();
+            if(result > 0) b = true;
+        } catch (Exception e) {
+            System.out.println("updateProduct err : " + e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+            } catch (Exception e2) {
+                System.out.println("closing err : " + e2);
+            }
+        }
+
+        return b;
+    }
+
+    public boolean deleteProduct(String no){
+        boolean b = false;
+
+        try {
+            conn = ds.getConnection();
+            String sql = "delete from shop_product where no = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, no);
+            if(pstmt.executeUpdate() > 0) b = true;
+        } catch (Exception e) {
+            System.out.println("deleteProduct err : " + e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+            } catch (Exception e2) {
+                System.out.println("closing err : " + e2);
+            }
+        }
+
+        return b;
     }
 }

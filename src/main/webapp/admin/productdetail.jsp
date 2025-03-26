@@ -51,8 +51,22 @@
             <%=productDto.getDetail()%>
         </td>
     </tr>
+    <tr>
+        <td colspan="3">
+            <a href="javascript:productUpdate('<%=productDto.getNo()%>')">수정하기</a>
+            <a href="javascript:productDelete('<%=productDto.getNo()%>')">삭제하기</a>
+        </td>
+    </tr>
 </table>
 
 <%@include file="admin_bottom.jsp" %>
+
+<form action="productupdate.jsp" name="updateFrm" method="post">
+    <input type="hidden" name="no">
+</form>
+
+<form action="productdelete.jsp" name="delFrm" method="post">
+    <input type="hidden" name="no">
+</form>
 </body>
 </html>

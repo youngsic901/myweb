@@ -12,7 +12,7 @@
     <script src="../js/script.js"></script>
     <script type="text/javascript">
         window.onload = () => {
-            document.querySelector("#btnLogin").addEventListener("click", funcLogin);
+            document.querySelector("#btnLogin").addEventListener("click", funcLogin_guest);
             document.querySelector("#btnNewMember").addEventListener("click", funcNewMember);
         }
     </script>

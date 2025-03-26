@@ -51,7 +51,7 @@ function sendDataFunc(code, a1, a2, a3, a4){
 }
 
 //회원 로그인 관련 ==> login
-function funcLogin() {
+function funcLogin_guest() {
     if(loginForm.id.value === ""){
         alert("회원 id 입력");
         loginForm.id.focus();
@@ -117,6 +117,24 @@ function memberUpdateCancelAdmin() {
 }
 
 function productDetail(no){ // 관리자 : 상품 처리
+    document.detailFrm.no.value = no;
+    document.detailFrm.submit();
+}
+
+function productUpdate(no){
+    document.updateFrm.no.value = no;
+    document.updateFrm.submit();
+}
+
+function productDelete(no){
+    if(confirm("정말 삭제 하시겠습니까?")){
+        document.delFrm.no.value = no;
+        document.delFrm.submit();
+    }
+}
+
+// 고객 : 상품
+function productDetailGuest(no){
     document.detailFrm.no.value = no;
     document.detailFrm.submit();
 }

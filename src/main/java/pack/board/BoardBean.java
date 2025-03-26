@@ -7,7 +7,8 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class BoardBean {
+public class
+BoardBean {
     private String name, pass, mail, title, cont, bip, bdate;
     private int num, readcnt, gnum, onum, nested; // gnum, onum, nested 는 원글, 댓글 기능을 구현하기 위해 사용
 
