@@ -2,6 +2,7 @@
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="pack.order.OrderBean" %>
 <%@ page import="pack.product.ProductDto" %>
+<%@ page import="java.util.Map" %>
 <%@ page
         contentType="text/html;charset=UTF-8"
         pageEncoding="UTF-8"
@@ -34,9 +35,22 @@
     </tr>
     <%
         } else {
+            /*
             Enumeration enu = hCart.keys(); // Map 타입의 컬렉션을 읽어 반복처리
             while (enu.hasMoreElements()){
                 OrderBean orderBean = (OrderBean)hCart.get(enu.nextElement());
+                ProductDto product = productManager.getProduct(orderBean.getProduct_no());
+                int price = Integer.parseInt(product.getPrice());
+                int quantity = Integer.parseInt(orderBean.getQuantity());
+                int subTotal = price * quantity; // 소계
+                totalPrice += subTotal; // 총계
+             */
+            // for - each loop와 Map.Entry를 사용해 Hashtable의 키-값 쌍을 반복처리
+            // hCart.entrySet()은 Set을 반환하여 for-each loop에서 사용된다.
+            // Map.Entry : Map에 저장된 모든 키-값 쌍을 각각의 키-값을 갖고 있는 하나의 객체로 얻는다.
+            // entry라는 객체변수는 HashMap에 대한 키-값 쌍을 하나의 객체로 갖고 있어 getKey(), getValue() 메소드로 key와 value에 접근 가능하다.
+            for(Map.Entry<String, Object> entry : hCart.entrySet()){
+                OrderBean orderBean = (OrderBean)entry.getValue();
                 ProductDto product = productManager.getProduct(orderBean.getProduct_no());
                 int price = Integer.parseInt(product.getPrice());
                 int quantity = Integer.parseInt(orderBean.getQuantity());
@@ -52,7 +66,7 @@
         </td>
     </tr>
     <%
-            } // while문 종료
+            } // 반복문 종료
     %>
     <tr>
         <td colspan="4">

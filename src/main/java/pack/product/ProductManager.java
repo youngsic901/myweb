@@ -1,5 +1,7 @@
 package pack.product;
 
+import pack.order.OrderBean;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -172,5 +174,27 @@ public class ProductManager {
         }
 
         return b;
+    }
+
+    // 고객이 상품을 주문한 경우 주문한 수량만큼 재고에서 빼기
+    public void reduceProduct(OrderBean obean){
+        try {
+            conn = ds.getConnection();
+            String sql = "update shop_product set stock=(stock - ?) where no = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, obean.getQuantity());
+            pstmt.setString(2, obean.getProduct_no());
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("reduceProduct err : " + e);
+        } finally {
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+            } catch (Exception e2) {
+                System.out.println("closing err : " + e2);
+            }
+        }
     }
 }

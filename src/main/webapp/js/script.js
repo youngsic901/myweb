@@ -138,3 +138,19 @@ function productDetailGuest(no){
     document.detailFrm.no.value = no;
     document.detailFrm.submit();
 }
+
+// 관리자가 주문 처리
+function orderDetail(no){
+    document.detailFrm.no.value = no;
+    document.detailFrm.submit();
+}
+
+function orderUpdate(form){
+    document.detailFrm.flag.value = "update";
+    form.submit();
+}
+
+function orderDelete(form){
+    document.detailFrm.flag.value = "delete";
+    form.submit();
+}
